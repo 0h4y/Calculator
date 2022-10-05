@@ -1,7 +1,57 @@
-﻿using System;
+﻿using CalculatorNamespace;
+using System;
+using System.Collections;
+using System.Data;
+using System.Runtime.CompilerServices;
 
-// Välkomnande meddelande
-Console.WriteLine("Hi! Welcome to the best calculator in the world";
+///<summary>
+///A calculator!
+///</summary>
+
+bool exit = false;
+Calc Calculator = new Calc();
+
+Calculator.Head();
+string input = Console.ReadLine();
+
+do
+{
+    if (input.ToLower() == "exit")
+    {
+        break;
+    }
+    Console.Clear();
+    Calculator.Head();
+    if (input.ToLower() == "h")
+    {
+        Console.Clear();
+        Calculator.Head();
+        foreach (var item in Calculator.historyList)
+        {
+            Console.WriteLine(item);
+        }
+    }
+    else
+    {
+        try
+        {
+            if (input != "")
+            {
+                DataTable dt = new DataTable();
+                var v = dt.Compute(input, "5");
+                Calculator.historyList.Add($"{input} = {v}");
+                Console.WriteLine($"{input} = {v}");
+            }
+        }
+        catch (EvaluateException)
+        {
+            Console.WriteLine("You can't do that! Use numbers and operators or allowed text for navigation.");
+        }
+    }
+    input = Console.ReadLine();
+    continue;
+} while (!exit);
+
 
 // En lista för att spara historik för räkningar
 // Användaren matar in tal och matematiska operation
@@ -12,3 +62,4 @@ Console.WriteLine("Hi! Welcome to the best calculator in the world";
 //Fråga användaren om den vill visa tidigare resultat.
 //Visa tidigare resultat
 //Fråga användaren om den vill avsluta eller fortsätta.
+
