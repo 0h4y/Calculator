@@ -4,53 +4,61 @@ using System.Collections;
 using System.Data;
 using System.Runtime.CompilerServices;
 
-///<summary>
-///A calculator!
-///</summary>
-
-bool exit = false;
-Calc Calculator = new Calc();
-
-Calculator.Head();
-string input = Console.ReadLine();
-
-do
+namespace CalculatorNamespace;
+/// <summary>
+/// 
+/// </summary>
+internal class Program
 {
-    if (input.ToLower() == "exit")
+    private static void Main(string[] args)
     {
-        break;
-    }
-    Console.Clear();
-    Calculator.Head();
-    if (input.ToLower() == "h")
-    {
-        Console.Clear();
+        bool exit = false;
+        Calc Calculator = new Calc();
+
         Calculator.Head();
-        foreach (var item in Calculator.historyList)
+        string input = Console.ReadLine();
+
+        do
         {
-            Console.WriteLine(item);
-        }
-    }
-    else
-    {
-        try
-        {
-            if (input != "")
+            if (input.ToLower() == "exit")
             {
-                DataTable dt = new DataTable();
-                var v = dt.Compute(input, "5");
-                Calculator.historyList.Add($"{input} = {v}");
-                Console.WriteLine($"{input} = {v}");
+                break;
             }
-        }
-        catch (EvaluateException)
-        {
-            Console.WriteLine("You can't do that! Use numbers and operators or allowed text for navigation.");
-        }
+            Console.Clear();
+            Calculator.Head();
+            if (input.ToLower() == "h")
+            {
+                Console.Clear();
+                Calculator.Head();
+                foreach (var item in Calculator.historyList)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+            else
+            {
+                try
+                {
+                    if (input != "")
+                    {
+                        DataTable dt = new DataTable();
+                        var v = dt.Compute(input, "2");
+                        Calculator.historyList.Add($"{input} = {v}");
+                        Console.WriteLine($"{input} = {v}");
+                    }
+                }
+                catch (EvaluateException)
+                {
+                    Console.WriteLine("You can't do that! Use numbers and operators or allowed text for navigation.");
+                }
+                catch (OverflowException ex) { Console.WriteLine("Too large number!"); }
+
+            }
+            input = Console.ReadLine();
+            continue;
+        } while (!exit);
     }
-    input = Console.ReadLine();
-    continue;
-} while (!exit);
+}
 
 
 // En lista för att spara historik för räkningar
