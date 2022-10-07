@@ -27,6 +27,7 @@ namespace CalculatorNamespace
             // Välkomnande meddelande
             Console.WriteLine("Hi! Welcome to the best calculator in the world");
             Console.WriteLine("----- [H] : History ----- [exit] : exit -----");
+            Console.WriteLine("You can use: + - / % ");
         }
     }
 }
