@@ -4,10 +4,95 @@
         <name>CalculatorNamespace</name>
     </assembly>
     <members>
-        <member name="T:CalculatorNamespace.Program">
+        <member name="T:CalculatorNamespace.Calc">
             <summary>
-            
+            Hello this is **Calc** from *CalculatorNamespace*
             </summary>
+        </member>
+        <member name="M:CalculatorNamespace.Calc.#ctor">
+            <summary>
+            This is a constructor for Calc class
+            A primary input for HistoryList is added wich fuction as a header. 
+            </summary>
+        </member>
+        <member name="P:CalculatorNamespace.Calc.HistorList">
+            <summary>
+            A public get/set for _historylist
+            </summary>
+        </member>
+        <member name="M:CalculatorNamespace.Calc.Compute(System.String)">
+            <summary>
+            Compute Method takes one input and calculates provided expression with the help from System.Data.Datatable.
+            The assignment did not exclude usage of imported libraries :) Thereby more time spent on Exception handling and these are logged! See Log()
+            The result is printed to console together with the initial expression provided.
+            </summary>
+            <param name="input">A string containing expression for computation</param>
+            <exception cref="T:System.DivideByZeroException">
+                As a part of the assignment, when zero division is found, this exception is thrown. 
+                Result from DataTable.Compute equal to "infinity" is checked because no actual zero division exception is thrown by Cumpute.
+            </exception>
+        </member>
+        <member name="M:CalculatorNamespace.Calc.GetHistory">
+            <summary>
+            GetHistory() prints previous calculations, if there are any...
+            </summary>
+        </member>
+        <member name="M:CalculatorNamespace.Calc.Head">
+            <summary>
+            Head() is simply outputting a nice headline for the best calculator :)
+            </summary>
+        </member>
+        <member name="M:CalculatorNamespace.Calc.Log(System.String)">
+            <summary>
+            Log() is writing any exceptions to the BestCalculatorLog.txt file.
+            Date and time is also provided.
+            </summary>
+            <param name="textToLog">A string for logging</param>
+        </member>
+        <member name="M:CalculatorNamespace.Calc.HistoryLog(System.String)">
+            <summary>
+            Logging of history by HistoryLog(), in reverse order with current datetime.
+            </summary>
+            <param name="textToLog">A string for logging</param>
+        </member>
+        <member name="M:CalculatorNamespace.Calc.GetHistoryLog">
+            <summary>
+            GetHistoryLog() outputs a 20 line long list of historical calcolations to console.
+            </summary>
+        </member>
+        <member name="T:CalculatorNamespace.Program">
+             <summary>
+             This program is a console based calculator wich is the final exam of my "programming basics" course.
+             The Pseudo code for the assignment are as follows: (also provided in code for easy nav.)
+             
+                 Welcome message
+                 A list to save history of calculations
+                 The user inputs number and math operation
+                 NOTE! The user must enter a number in order to move forward in the program!
+                 If the user were to divide 0 by 0 display Invalid input!
+                 Add results to the list
+                 Show result
+                 Ask user if it wants to show previous results.
+                 Display previous results
+                 Ask the user whether to exit or continue.
+            
+             As extra features:
+             -XML comments are used, this makes it easy to provide a online code/API doc in the future. See: https://dotnet.github.io/docfx/
+             -Logging of exceptions to BestCalculatorLog.txt in bin folder
+             -Logging of all calculations to HistoryLog.txt in bin folder.
+             -A Calculator class is used to keep the code cleaner. incuding theese methods:
+                 Calculator.HistorList()
+                 Calculator.Compute()
+                 Calculator.Log()
+                 Calculator.HistoryLog()
+                 Calculator.GetHistoryLog()
+                 And more... see calc.cs for full documentation.
+             
+             Further development includes:
+             TODO: A nicer presentation, including alignment of text
+             TODO: Implement a more graphical menu, like this sweet one: https://github.com/lorenarms/Personal_CSharp_Utilities/tree/master/MenuBuilder
+             
+             </summary>
         </member>
     </members>
 </doc>
