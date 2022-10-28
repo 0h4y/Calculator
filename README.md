@@ -1,8 +1,6 @@
 # Calculator
 /// This program is a console based calculator wich is the final exam of my "programming basics" course.
-
 /// The Pseudo code for the assignment are as follows: (also provided in code... see program.cs and calc.cs)
-
 /// 
 ///     Welcome message
 ///     A list to save history of calculations
