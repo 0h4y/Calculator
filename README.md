@@ -1,5 +1,5 @@
 # Calculator
-/// This program is a console based calculator wich is the final exam of my "programming basics" course.
+/// This program is a console based calculator wich is the final exam of my "programming basics" course. \n
 /// The Pseudo code for the assignment are as follows: (also provided in code... see program.cs and calc.cs)
 /// 
 ///     Welcome message
